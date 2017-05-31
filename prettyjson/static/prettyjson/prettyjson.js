@@ -12,6 +12,7 @@ parserawbutton.click(function(e){
   var widget = $(e.target).closest('.jsonwidget');
   var rawarea = widget.find('textarea');
   var parsedarea = widget.find('div.parsed');
+
   if ($(e.target).text() === 'Show parsed') {
     var validjson = true;
     try {
@@ -57,6 +58,10 @@ $('button.parsed').click(function(e){
 
 if (jsonWidget.attr("data-initial") == "parsed") {
   parserawbutton.click();
+}
+
+if (jsonWidget.attr("data-visible") === 'False') {
+  jsonWidget.find('button').hide();
 }
 
 });

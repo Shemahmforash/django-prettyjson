@@ -90,6 +90,15 @@ class JsonAdmin(admin.ModelAdmin):
   }
 ```
 
+If you want the buttons to be hidden, you can use:
+```python
+class JsonAdmin(admin.ModelAdmin):
+  formfield_overrides = {
+    JSONField: {'widget': PrettyJSONWidget(attrs={'visible': False})}
+  }
+```
+
+
 ## Running Tests
 
 In development.

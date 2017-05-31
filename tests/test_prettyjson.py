@@ -32,3 +32,24 @@ class TestPrettyJson(TestCase):
         result = widget.render(mock.MagicMock(), mock.MagicMock())
 
         self.assertIn('data-initial="raw"', result)
+
+    def test_widget_without_args_renders_buttons_visible(self):
+        widget = PrettyJSONWidget()
+
+        result = widget.render(mock.MagicMock(), mock.MagicMock())
+
+        self.assertIn('data-visible="True"', result)
+
+    def test_widget_renders_buttons_visible_when_requested(self):
+        widget = PrettyJSONWidget(attrs={'visible': True})
+
+        result = widget.render(mock.MagicMock(), mock.MagicMock())
+
+        self.assertIn('data-visible="True"', result)
+
+    def test_widget_renders_buttons_hidden_when_requested(self):
+        widget = PrettyJSONWidget(attrs={'visible': False})
+
+        result = widget.render(mock.MagicMock(), mock.MagicMock())
+
+        self.assertIn('data-visible="False"', result)
